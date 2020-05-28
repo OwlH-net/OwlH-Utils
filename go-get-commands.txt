@@ -1,0 +1,51 @@
+# 2020-05-27 - prepare go environment - centos
+# install go
+cd /tmp
+wget https://dl.google.com/go/go1.13.6.linux-amd64.tar.gz
+tar -C /usr/local -xzf go1.13.6.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=/home/ec2-user/go
+export GOROOT=/usr/local/go
+
+# install additional packages 
+yum -y install git
+
+yum -y install gcc
+yum -y install libpcap-devel
+#centOS 8 
+dnf --enablerepo=PowerTools install libpcap-devel
+
+# go libraries installation
+
+go get github.com/astaxie/beego
+go get github.com/elastic/go-elasticsearch
+go get github.com/google/gopacket/pcap
+go get github.com/mattn/go-sqlite3
+go get github.com/hpcloud/tail
+go get github.com/oschwald/geoip2-golang
+go get github.com/pkg/sftp
+go get github.com/shirou/gopsutil
+go get github.com/beego/bee
+go get github.com/dgrijalva/jwt-go
+go get github.com/go-ldap/ldap
+go get github.com/drewrm/splunk-golang
+go get golang.org/x/text/encoding/unicode
+#go get gopkg.in/korylprince/go-ad-auth.v3
+#go get gopkg.in/yaml.v3
+
+# workspace 
+
+mkdir -p /home/ec2-user
+mkdir -p /home/ec2-user/go/src/owlhinstaller
+mkdir -p /home/ec2-user/go/src/owlhnode
+mkdir -p /home/ec2-user/go/src/owlhmaster
+mkdir -p /home/ec2-user/git
+
+#cd /gohome
+#wget repo.owlh.net/devel-sh/gitclone.sh
+#wget repo.owlh.net/devel-sh/update.sh
+#wget repo.owlh.net/devel-sh/publish.sh
+
+
+
+
